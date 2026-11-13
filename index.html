@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Quiz — Desafio do Milhão</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topo">
+        <h1>⚡ MEGA QUIZ DO MILHÃO ⚡</h1>
+        <p class="subtitulo">20 desafios • 3 pulos • Dobro ou Nada • Rumo ao topo!</p>
+    </header>
+
+    <main class="container">
+
+        <!-- TELA INICIAL -->
+        <section id="tela-inicial" class="painel">
+            <h2>Pronto para o desafio?</h2>
+            <p>Informe seu apelido para entrar na arena e disputar o ranking.</p>
+
+            <div class="campo-grupo">
+                <label for="nome-jogador">Seu Apelido:</label>
+                <input
+                    type="text"
+                    id="nome-jogador"
+                    placeholder="Digite aqui..."
+                    maxlength="25"
+                    autocomplete="off"
+                    onkeydown="verificarEnter(event)"
+                >
+            </div>
+
+            <div class="grupo-botoes">
+                <button type="button" class="btn principal" onclick="iniciarJogo()">
+                    🚀 ENTRAR E COMEÇAR
+                </button>
+
+                <button type="button" class="btn secundario" onclick="abrirRanking('inicial')">
+                    🏆 VER RANKING
+                </button>
+            </div>
+        </section>
+
+        <!-- TELA DO JOGO -->
+        <section id="tela-jogo" class="painel escondido">
+            
+            <div class="placar-topo">
+                <span id="numero-pergunta" class="etiqueta">Questão 1 / 20</span>
+                <span id="pontuacao" class="etiqueta etiqueta-premio">Prêmio: R$ 0</span>
+            </div>
+
+            <div class="barra-progresso">
+                <div id="progresso"></div>
+            </div>
+
+            <div class="caixa-pergunta">
+                <h2 id="pergunta">Carregando questão...</h2>
+            </div>
+
+            <div id="alternativas" class="alternativas"></div>
+
+            <p id="mensagem" class="feedback-texto"></p>
+
+            <div class="acoes">
+                <button type="button" id="btn-pular" class="btn secundario" onclick="usarPulo()">
+                    ⏭ Pular (3)
+                </button>
+
+                <button type="button" id="btn-dobro" class="btn destaque" onclick="ativarDobro()">
+                    🔥 Dobro ou Nada
+                </button>
+
+                <button type="button" id="btn-desistir" class="btn perigo" onclick="desistirJogo()">
+                    🏳️ Desistir
+                </button>
+            </div>
+
+            <div class="controle-avancar">
+                <button type="button" id="btn-continuar" class="btn principal escondido" onclick="proximaPergunta()">
+                    AVANÇAR ➔
+                </button>
+            </div>
+
+        </section>
+
+        <!-- TELA FINAL -->
+        <section id="tela-final" class="painel escondido">
+            <h2 id="resultado-titulo">Fim da Partida!</h2>
+            
+            <div class="resumo-final">
+                <p id="resultado-texto"></p>
+                <p id="resultado-premio" class="premio-final"></p>
+            </div>
+
+            <div class="grupo-botoes">
+                <button type="button" class="btn principal" onclick="iniciarJogo()">
+                    🔄 JOGAR NOVAMENTE
+                </button>
+
+                <button type="button" class="btn secundario" onclick="abrirRanking('final')">
+                    🏆 VER RANKING
+                </button>
+
+                <button type="button" class="btn secundario" onclick="voltarInicio()">
+                    🏠 TELA INICIAL
+                </button>
+            </div>
+        </section>
+
+        <!-- TELA DE RANKING -->
+        <section id="tela-ranking" class="painel escondido">
+            <h2>🏆 Hall da Fama</h2>
+
+            <div class="container-lista">
+                <ol id="lista-ranking" class="lista-pontuacao">
+                    <li>Nenhum jogador registrado ainda.</li>
+                </ol>
+            </div>
+
+            <div class="grupo-botoes">
+                <button type="button" class="btn perigo" onclick="limparRanking()">
+                    🗑️ ZERAR RANKING
+                </button>
+
+                <button type="button" class="btn principal" onclick="fecharRanking()">
+                    ⬅️ VOLTAR
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Mega Quiz do Milhão • Teste seus limites</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
